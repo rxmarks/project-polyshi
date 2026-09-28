@@ -7,3 +7,5 @@ __pycache__/
 *.db-shm
 .ipynb_checkpoints/
 .env
+# Generated analysis data
+outputs/*.csv
