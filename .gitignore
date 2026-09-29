@@ -11,3 +11,6 @@ __pycache__/
 outputs/*.csv
 
 outputs/*.png
+
+# Raw cross-market snapshots
+data/cross_market/raw/
