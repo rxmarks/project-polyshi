@@ -16,7 +16,7 @@ EPS = 1e-9
 # Confirm these rates against the applicable platform schedules
 # before treating results as a live-trading estimate.
 POLYMARKET_CRYPTO_TAKER_RATE = 0.07
-KALSHI_TAKER_RATE = 0.0175
+KALSHI_TAKER_RATE = 0.07
 
 if not INPUT_PATH.exists():
     raise FileNotFoundError(f"Missing {INPUT_PATH}")
