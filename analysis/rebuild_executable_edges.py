@@ -294,14 +294,25 @@ for time_limit in time_limits:
 summary = pd.DataFrame(summary_rows)
 summary.to_csv(SUMMARY_PATH, index=False)
 
+EPS = 1e-9
+
 strict = eligible[
     eligible["timestamp_gap_seconds"].le(1)
-    & eligible["explicit_raw_edge"].gt(0.02)
+    & ((eligible["explicit_raw_edge"] - 0.02) > EPS)
 ].copy()
 
 strict["net_edge_after_2pct_hurdle"] = (
     strict["explicit_raw_edge"] - 0.02
 )
+
+result["net_edge_after_2pct_hurdle"] = (
+    result["explicit_raw_edge"] - 0.02
+)
+
+result.loc[
+    result["net_edge_after_2pct_hurdle"].abs() < EPS,
+    "net_edge_after_2pct_hurdle"
+] = 0.0
 
 strict["net_profit_at_top_size_after_hurdle"] = (
     strict["net_edge_after_2pct_hurdle"]
