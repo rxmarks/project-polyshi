@@ -116,6 +116,32 @@ data["fee_adjusted_profit_at_top_size"] = (
     * data["quoted_executable_contracts"]
 )
 
+data["one_leg_slippage_cost"] = (
+    data["all_in_cost_per_contract"] + 0.01
+)
+
+data["two_leg_slippage_cost"] = (
+    data["all_in_cost_per_contract"] + 0.02
+)
+
+data["edge_after_one_leg_slippage"] = (
+    1 - data["one_leg_slippage_cost"]
+)
+
+data["edge_after_two_leg_slippage"] = (
+    1 - data["two_leg_slippage_cost"]
+)
+
+data["profit_after_one_leg_slippage"] = (
+    data["edge_after_one_leg_slippage"]
+    * data["quoted_executable_contracts"]
+)
+
+data["profit_after_two_leg_slippage"] = (
+    data["edge_after_two_leg_slippage"]
+    * data["quoted_executable_contracts"]
+)
+
 data["fee_adjusted_roi_on_all_in_cost"] = np.where(
     data["all_in_cost_per_contract"].gt(0),
     (
@@ -162,6 +188,10 @@ strict_columns = [
     "gross_profit_at_top_size",
     "combined_fee_at_top_size",
     "fee_adjusted_profit_at_top_size",
+    "edge_after_one_leg_slippage",
+    "edge_after_two_leg_slippage",
+    "profit_after_one_leg_slippage",
+"profit_after_two_leg_slippage",
     "fee_adjusted_roi_on_all_in_cost",
     "kalshi_winner",
     "polymarket_winner",
