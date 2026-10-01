@@ -2,15 +2,19 @@ venv/
 .venv/
 __pycache__/
 *.pyc
+.env
+.ipynb_checkpoints/
+
+# Local databases
 *.db
 *.db-wal
 *.db-shm
-.ipynb_checkpoints/
-.env
-# Generated analysis data
-outputs/*.csv
+*.sqlite
+*.sqlite3
 
-outputs/*.png
+# Raw data and generated outputs
+data/
+outputs/
 
-# Raw cross-market snapshots
-data/cross_market/raw/
+# Local flat files
+*.csv
